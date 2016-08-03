@@ -35,7 +35,7 @@ the front-end (webpack etc.)...
 
 You friend :neckbeard: want contribute ! How to bootstrap the craft ?
 
-- Prepare a dev module with (repository) called: `invaders-dev`
+- Prepare a dev module (with repository) called: `invaders-dev`
 
 - Add git submodules for your own toolbox, framework, front-end...
 
@@ -44,15 +44,24 @@ You friend :neckbeard: want contribute ! How to bootstrap the craft ?
 - Hack in the .scrc file and add your own modules in the list
 
 - Add startcraft in pre and postinstall script of your `invaders-dev` package.json
-- Give the `invaders-dev` repo url to your friend, and i can just npm install in it!
+- Give the `invaders-dev` repo url to your friend, and he can just npm install in it!
 
-## Configuration
+## How to use and configure
 
-Simply put a json file named `.scrc`.
+Add `startcraft` pre/post install entries to your `package.json`:
+
+```json
+"scripts": {
+  "preinstall": "startcraft",
+  "postinstall": "startcraft",
+},
+```
+
+Touch a json file named `.scrc` in your root package directory:
 
 ```json
 {
-  "npmargs": [],
+  "npmInstallArgs": [],
   "modules": [
     "./lib/my-first-module",
     "./lib/my-second-module"
@@ -69,9 +78,9 @@ Simply put a json file named `.scrc`.
   }
 }
 ```
+`npmInstallArgs` can be used to add custom args for when startcraft perform `npm install`.
 
-The content must have the relative paths on the modules to ignore with the calls on
-`npm install`.
+`modules` entries is relative paths to your modules from the dev root package.
 
-Scripts entries is hooked on the npm lifecycle.
-You can tell if they run pre or post stratcraft run.
+`scripts` entries is hooked on the npm lifecycle.
+You can tell if they run pre or post `startcraft` run.
