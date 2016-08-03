@@ -6,11 +6,11 @@ const path   = require ('path');
 const watt   = require ('watt');
 const spawn  = require ('child_process').spawn;
 
-function loadIgnoreList () {
-  return JSON.parse (fs.readFileSync ('./.scignore'));
+function loadConfig () {
+  return JSON.parse (fs.readFileSync ('./.scrc'));
 }
 
-const ignoreList = loadIgnoreList ();
+const config = loadConfig ();
 
 const npm = (verb, modPath, cwd, next) => {
   console.log (`npm ${verb} ${modPath}`);
@@ -21,9 +21,7 @@ const npm = (verb, modPath, cwd, next) => {
   } else {
     args.push (modPath);
   }
-
-  args.push ('--registry');
-  args.push ('http://localhost:8485');
+  args.concat (config.npmargs);
 
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   const res = spawn (npm, args, {
@@ -45,7 +43,7 @@ function parsePackage (pkgPath) {
       Object
         .keys (deps)
         .filter (pkg => {
-          return ignoreList.indexOf (pkg) === -1;
+          return config.modules.indexOf (pkg) === -1;
         })
         .forEach (pkg => {
           list[`${pkg}@${deps[pkg]}`] = null;
@@ -68,12 +66,12 @@ function symlink (src, dst) {
 const boot = watt (function * (next) {
   let list = {};
 
-  ignoreList.forEach (pkgPath => {
+  config.modules.forEach (pkgPath => {
     const pkgJsonPath = path.join (__dirname, pkgPath, 'package.json');
     list = Object.assign (list, parsePackage (pkgJsonPath));
   });
 
-  ignoreList.forEach (pkgPath => {
+  config.modules.forEach (pkgPath => {
     const mod = path.join (__dirname, 'node_modules', path.basename (pkgPath));
     try {
       const st = fs.lstatSync (mod);
@@ -89,7 +87,7 @@ const boot = watt (function * (next) {
 
   yield npm ('install', Object.keys (list), null, next);
 
-  ignoreList.forEach (pkgPath => {
+  config.modules.forEach (pkgPath => {
     symlink (
       path.join (__dirname, 'node_modules'),
       path.join (__dirname, pkgPath, 'node_modules')
