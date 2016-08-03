@@ -1,6 +1,6 @@
 {
   "name": "startcraft",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Helper for crafting modules without publishing",
   "main": "lib/startcraft.js",
   "engines": {
