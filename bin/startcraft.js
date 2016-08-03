@@ -5,6 +5,7 @@ const fs     = require ('fs');
 const path   = require ('path');
 const watt   = require ('watt');
 const shrew  = require ('shrew');
+const merge  = require ('merge-deep');
 const spawn  = require ('child_process').spawn;
 
 const root = shrew ();
@@ -50,7 +51,10 @@ function parsePackage (pkgPath) {
           return packages.indexOf (pkg) === -1;
         })
         .forEach (pkg => {
-          list[`${pkg}@${deps[pkg]}`] = null;
+          if (!list.hasOwnProperty (pkg)) {
+            list[pkg] = [];
+          }
+          list[pkg].push (deps[pkg]);
         });
     });
 
@@ -68,12 +72,26 @@ function symlink (src, dst) {
 }
 
 const boot = watt (function * (next) {
+  let mustThrown = false;
   let list = {};
 
   config.modules.forEach (pkgPath => {
     const pkgJsonPath = path.join (root, pkgPath, 'package.json');
-    list = Object.assign (list, parsePackage (pkgJsonPath));
+    list = merge (list, parsePackage (pkgJsonPath));
   });
+
+  Object
+    .keys (list)
+    .forEach (mod => {
+      if (list[mod].length > 1) {
+        console.error (`Clash with ${mod} versions ${list[mod].join (', ')}`);
+        mustThrown = true;
+      }
+    });
+
+  if (mustThrown) {
+    throw new Error ('clash');
+  }
 
   config.modules.forEach (pkgPath => {
     const mod = path.join (root, 'node_modules', path.basename (pkgPath));
@@ -89,7 +107,7 @@ const boot = watt (function * (next) {
     }
   });
 
-  yield npm ('install', Object.keys (list), root, next);
+  yield npm ('install', Object.keys (list).map (mod => `${mod}@${list[mod][0]}`), root, next);
 
   config.modules.forEach (pkgPath => {
     symlink (
