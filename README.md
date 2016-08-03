@@ -16,6 +16,15 @@
 
 *startcraft* can help you :punch:
 
+## What startcraft do for you ?
+
+- :wrench: symlink your dev modules in the root node_modules
+- :octopus: npm install your dev modules depencencies in the root node_modules
+- :racehorse: run special `"startcraft": "echo hello"` scripts entry of your dev modules
+- :cake: can run pre/post startcraft scripts for you
+
+Okey...
+
 ## Example
 
 You develop the next killer *space invader* mmo-shooter  :space_invader:,
@@ -36,13 +45,6 @@ You friend :neckbeard: want contribute ! How to bootstrap the craft ?
 
 - Add startcraft in pre and postinstall script of your `invaders-dev` package.json
 - Give the `invaders-dev` repo url to your friend, and i can just npm install in it!
-
-## What startcraft do for you ?
-
-- :wrench: symlink your dev modules in the root node_modules
-- :octopus: npm install your dev modules depencencies in the root node_modules
-- :racehorse: run special `"startcraft": "echo hello"` scripts entry of your dev modules
-- :cake: can run pre/post startcraft scripts for you
 
 ## Configuration
 
