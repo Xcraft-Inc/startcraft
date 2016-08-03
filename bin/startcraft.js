@@ -39,6 +39,7 @@ function parsePackage (pkgPath) {
   def = JSON.parse (def);
 
   const list = {};
+  const packages = config.modules.map (mod => path.basename (mod));
 
   [def.dependencies, def.devDependencies]
     .filter (deps => !!deps)
@@ -46,7 +47,7 @@ function parsePackage (pkgPath) {
       Object
         .keys (deps)
         .filter (pkg => {
-          return config.modules.indexOf (pkg) === -1;
+          return packages.indexOf (pkg) === -1;
         })
         .forEach (pkg => {
           list[`${pkg}@${deps[pkg]}`] = null;
