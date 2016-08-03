@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=5"
   },
+  "bin": {
+    "startcraft": "bin/startcraft.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
