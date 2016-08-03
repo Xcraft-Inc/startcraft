@@ -4,10 +4,13 @@
 const fs     = require ('fs');
 const path   = require ('path');
 const watt   = require ('watt');
+const shrew  = require ('shrew');
 const spawn  = require ('child_process').spawn;
 
+const root = shrew ();
+
 function loadConfig () {
-  return JSON.parse (fs.readFileSync ('./.scrc'));
+  return JSON.parse (fs.readFileSync (path.join (root, '.scrc')));
 }
 
 const config = loadConfig ();
@@ -67,12 +70,12 @@ const boot = watt (function * (next) {
   let list = {};
 
   config.modules.forEach (pkgPath => {
-    const pkgJsonPath = path.join (__dirname, pkgPath, 'package.json');
+    const pkgJsonPath = path.join (root, pkgPath, 'package.json');
     list = Object.assign (list, parsePackage (pkgJsonPath));
   });
 
   config.modules.forEach (pkgPath => {
-    const mod = path.join (__dirname, 'node_modules', path.basename (pkgPath));
+    const mod = path.join (root, 'node_modules', path.basename (pkgPath));
     try {
       const st = fs.lstatSync (mod);
       if (st.isSymbolicLink ()) {
@@ -85,16 +88,16 @@ const boot = watt (function * (next) {
     }
   });
 
-  yield npm ('install', Object.keys (list), null, next);
+  yield npm ('install', Object.keys (list), root, next);
 
   config.modules.forEach (pkgPath => {
     symlink (
-      path.join (__dirname, 'node_modules'),
-      path.join (__dirname, pkgPath, 'node_modules')
+      path.join (root, 'node_modules'),
+      path.join (root, pkgPath, 'node_modules')
     );
     symlink (
-      path.join (__dirname, pkgPath),
-      path.join (__dirname, 'node_modules', path.basename (pkgPath))
+      path.join (root, pkgPath),
+      path.join (root, 'node_modules', path.basename (pkgPath))
     );
   });
 });

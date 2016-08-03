@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Xcraft-Inc/startcraft#readme",
   "dependencies": {
+    "shrew": "^0.1.0",
     "watt": "^3.3.0"
   }
 }
