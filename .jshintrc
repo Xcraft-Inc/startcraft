@@ -1,15 +1,18 @@
 {
+  "maxerr"        : 50,
+
   "bitwise"       : true,
   "camelcase"     : true,
   "curly"         : true,
   "eqeqeq"        : true,
   "es3"           : false,
+  "esversion"     : 6,
   "forin"         : true,
   "freeze"        : true,
   "immed"         : true,
   "indent"        : 2,
   "latedef"       : true,
-  "newcap"        : true,
+  "newcap"        : false,
   "noarg"         : true,
   "noempty"       : true,
   "nonbsp"        : true,
@@ -28,19 +31,18 @@
   "boss"          : false,
   "debug"         : false,
   "eqnull"        : false,
-  "esnext"        : true,
   "evil"          : false,
   "expr"          : false,
   "funcscope"     : false,
-  "globalstrict"  : false,
+  "globalstrict"  : true,
   "iterator"      : false,
   "lastsemic"     : false,
   "laxbreak"      : false,
   "laxcomma"      : false,
   "loopfunc"      : false,
-  "maxerr"        : 50,
   "moz"           : false,
   "multistr"      : false,
+  "noyield"       : false,
   "notypeof"      : false,
   "proto"         : false,
   "scripturl"     : false,
@@ -48,13 +50,14 @@
   "sub"           : false,
   "supernew"      : false,
   "validthis"     : false,
-  "noyield"       : false,
 
-  "browser"       : true,
+  "browser"       : false,
+  "browserify"    : false,
   "couch"         : false,
   "devel"         : false,
   "dojo"          : false,
-  "jquery"        : true,
+  "jasmine"       : false,
+  "jquery"        : false,
   "mocha"         : true,
   "mootools"      : false,
   "node"          : true,
@@ -66,7 +69,11 @@
   "wsh"           : false,
   "yui"           : false,
 
-  "globals": {
-    "angular"     : false
+  "globals"       : {
+    "require"     : true,
+    "module"      : true,
+    "console"     : true,
+    "document"    : true,
+    "window"      : true
   }
 }

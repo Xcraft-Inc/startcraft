@@ -3,12 +3,11 @@
   "requireCamelCaseOrUpperCaseIdentifiers":   true,
   "requireCapitalizedConstructors":           true,
   "requireCommaBeforeLineBreak":              true,
-  "requireCurlyBraces":                       true,
+  "requireCurlyBraces":                       ["if", "else", "for", "try", "catch"],
   "requireDotNotation":                       true,
   "requireLineFeedAtFileEnd":                 true,
   "requireOperatorBeforeLineBreak":           true,
   "requireParenthesesAroundIIFE":             true,
-  "requireSemicolons":                        true,
 
   "requireSpaceBetweenArguments":             true,
   "requireSpacesInCallExpression":            true,
@@ -31,46 +30,34 @@
   "disallowEmptyBlocks":                      true,
   "disallowKeywordsOnNewLine":                ["else", "catch"],
   "disallowNewlineBeforeBlockStatements":     true,
-  "disallowPaddingNewlinesInBlocks":          true,
+  "disallowPaddingNewlinesInBlocks":          false,
   "disallowQuotedKeysInObjects":              true,
   "disallowMixedSpacesAndTabs":               true,
   "disallowTrailingWhitespace":               true,
 
   "disallowSpaceAfterPrefixUnaryOperators":   true,
   "disallowSpaceBeforePostfixUnaryOperators": true,
-
-  "disallowSpacesInsideArrayBrackets":        "all",
-  "disallowSpacesInsideObjectBrackets":       "all",
-
-  "disallowSpaceAfterObjectKeys":             true,
-  "disallowSpaceBeforeComma":                 true,
-  "disallowSpaceBeforeSemicolon":             true,
+  "disallowSpaceAfterObjectKeys":             { "allExcept": ["method"] },
 
   "disallowYodaConditions":                   true,
 
   "safeContextKeyword":                       ["self"],
 
-  "validateIndentation":                      2,
   "jsDoc": {
-    "checkAnnotations":                       true,
     "checkParamNames":                        true,
     "checkRedundantParams":                   true,
-    "requireParamTypes":                      true,
-    "checkReturnTypes":                       true,
-    "checkRedundantReturns":                  true,
-    "requireReturnTypes":                     true,
-    "checkTypes":                             true,
-    "requireHyphenBeforeDescription":         true,
-    "requireNewlineAfterDescription":         true,
-    "requireDescriptionCompleteSentence":     true
+    "requireParamTypes":                      true
   },
-  "validateLineBreaks":                       "LF",
+
+  "validateIndentation":                      2,
   "validateParameterSeparator":               ", ",
-  "validateQuoteMarks":                       "'",
+  "validateQuoteMarks":                       { "mark": "'", "escape": true, "ignoreJSX": true },
 
   "maximumLineLength": {
     "value":                                  120,
     "allowUrlComments":                       true,
     "allowRegex":                             true
-  }
+  },
+
+  "requireSemicolons":                        true
 }
