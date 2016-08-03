@@ -50,15 +50,28 @@ You friend :neckbeard: want contribute ! How to bootstrap the craft ?
 
 Simply put a json file named `.scrc`.
 
-The content must have the relative paths on the modules to ignore with the calls on
-`npm install`.
-
 ```json
 {
   "npmargs": [],
   "modules": [
     "./lib/my-first-module",
     "./lib/my-second-module"
-  ]
+  ],
+  "scripts": {
+    "presc": {
+      "postinstall" : [
+        "git submodule update --init --recursive",
+        "git submodule foreach --recursive git checkout master",
+        "git submodule foreach --recursive git pull"
+      ]
+    },
+    "postsc": {}
+  }
 }
 ```
+
+The content must have the relative paths on the modules to ignore with the calls on
+`npm install`.
+
+Scripts entries is hooked on the npm lifecycle.
+You can tell if they run pre or post stratcraft run.
