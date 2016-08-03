@@ -1,0 +1,2 @@
+package.json eol=lf
+bin/*.js eol=lf
