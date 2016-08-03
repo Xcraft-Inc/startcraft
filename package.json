@@ -1,0 +1,33 @@
+{
+  "name": "startcraft",
+  "version": "0.1.0",
+  "description": "Helper for crafting modules without publishing",
+  "main": "lib/startcraft.js",
+  "engines": {
+    "node": ">=5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xcraft-Inc/startcraft.git"
+  },
+  "keywords": [
+    "devtools",
+    "npm",
+    "link",
+    "dependencies",
+    "modules",
+    "xcraft"
+  ],
+  "author": "Mathieu Schroeter & Samuel Loup",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Xcraft-Inc/startcraft/issues"
+  },
+  "homepage": "https://github.com/Xcraft-Inc/startcraft#readme",
+  "dependencies": {
+    "watt": "^3.3.0"
+  }
+}
