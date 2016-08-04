@@ -10,7 +10,7 @@
     "startcraft": "bin/startcraft.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,9 @@
     "merge-deep": "^3.0.0",
     "shrew": "^0.1.0",
     "watt": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0"
   }
 }
