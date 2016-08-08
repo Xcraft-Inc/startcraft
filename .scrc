@@ -1,8 +1,8 @@
 {
   "npmInstallArgs": [],
   "modules": [
-    "./lib/my-first-module",
-    "./lib/my-second-module"
+    "./test/module-not-available",
+    "./test/test-module"
   ],
   "scripts": {
     "presc": {
