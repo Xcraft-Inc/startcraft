@@ -4,7 +4,7 @@
   "description": "Helper for crafting modules without publishing",
   "main": "lib/startcraft.js",
   "engines": {
-    "node": ">=5"
+    "node": ">=6"
   },
   "bin": {
     "startcraft": "bin/startcraft.js"
