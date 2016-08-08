@@ -40,6 +40,8 @@ const scExec = watt (function * (section, next) {
   if (config.scripts &&
       config.scripts.presc &&
       config.scripts[section][lifecycleEvent]) {
+    console.log (`Run ${lifecycleEvent} script for ${section} ...`);
+
     const cmds = config.scripts[section][lifecycleEvent];
     for (const cmd of cmds) {
       yield exec (cmd, {cwd: root}, cbExec (next));
