@@ -37,9 +37,9 @@ function cbExec (next) {
 }
 
 const scExec = watt (function * (section, next) {
-  if (config.hasOwnProperty ('scripts') &&
-      config.scripts.hasOwnProperty ('presc') &&
-      config.scripts[section].hasOwnProperty (lifecycleEvent)) {
+  if (config.scripts &&
+      config.scripts.presc &&
+      config.scripts[section][lifecycleEvent]) {
     const cmds = config.scripts[section][lifecycleEvent];
     for (const cmd of cmds) {
       yield exec (cmd, {cwd: root}, cbExec (next));
