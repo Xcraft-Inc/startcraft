@@ -1,0 +1,17 @@
+{
+  "npmInstallArgs": [],
+  "modules": [
+    "./lib/my-first-module",
+    "./lib/my-second-module"
+  ],
+  "scripts": {
+    "presc": {
+      "postinstall" : [
+        "git submodule update --init --recursive",
+        "git submodule foreach --recursive git checkout master",
+        "git submodule foreach --recursive git pull"
+      ]
+    },
+    "postsc": {}
+  }
+}
