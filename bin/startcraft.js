@@ -40,7 +40,7 @@ const scExec = watt (function * (section, next) {
   if (config.scripts &&
       config.scripts.presc &&
       config.scripts[section][lifecycleEvent]) {
-    console.log (`Run ${lifecycleEvent} script for ${section} ...`);
+    console.log (`Run ${lifecycleEvent} script for section '${section}' ...`);
 
     const cmds = config.scripts[section][lifecycleEvent];
     for (const cmd of cmds) {
@@ -53,10 +53,10 @@ watt (function * () {
   yield scExec ('presc');
   yield lcEvent ();
   yield scExec ('postsc');
-}, (err) => {
-  if (err) {
-    console.error (err);
+}, (ex) => {
+  if (ex) {
+    console.error (ex.message || ex);
   } else {
-    console.log ('done');
+    console.log ('startcraft done');
   }
 }) ();
