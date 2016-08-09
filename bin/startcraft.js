@@ -56,6 +56,7 @@ watt (function * () {
 }, (ex) => {
   if (ex) {
     console.error (ex.message || ex);
+    process.exit (1);
   } else {
     console.log ('startcraft done');
   }
