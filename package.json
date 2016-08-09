@@ -32,6 +32,7 @@
   "homepage": "https://github.com/Xcraft-Inc/startcraft#readme",
   "dependencies": {
     "merge-deep": "^3.0.0",
+    "semver": "^5.3.0",
     "shrew": "^0.1.0",
     "watt": "^3.3.0"
   },
