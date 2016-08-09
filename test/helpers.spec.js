@@ -1,4 +1,5 @@
 'use strict';
+/* jshint -W030 */
 
 const {expect} = require ('chai');
 
