@@ -6,7 +6,7 @@
     "node": ">=6"
   },
   "bin": {
-    "startcraft": "bin/startcraft.js"
+    "startcraft": "bin/startcraft"
   },
   "scripts": {
     "test": "mocha test/**/*.spec.js"
