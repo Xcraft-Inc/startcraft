@@ -39,18 +39,17 @@ You friend :neckbeard: wants to contribute! How to bootstrap the craft?
 - Add git submodules for your own toolbox, framework, front-end...
 - Install startcraft as dev-dep.
 - Hack in the `.scrc` file and add your own modules in the list.
-- Add `startcraft` in *pre* and *postinstall* script of your `invaders-dev`
+- Add `startcraft` in *postinstall* script of your `invaders-dev`
   `package.json`.
 - Give the `invaders-dev` repo url to your friend, and he can just `npm install`
   in it!
 
 ## How to use and configure
 
-Add `startcraft` pre/post install entries to your `package.json`:
+Add `startcraft` post install entry to your `package.json`:
 
 ```json
 "scripts": {
-  "preinstall": "startcraft",
   "postinstall": "startcraft",
 },
 ```
