@@ -14,7 +14,6 @@ const root = shrew ();
 let lcEvent = null;
 
 switch (lifecycleEvent) {
-  case 'preinstall':
   case 'postinstall': {
     lcEvent = require (`../lib/events/${lifecycleEvent}.js`);
     break;
