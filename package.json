@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.0.0"
+    "mocha": "^3.0.0",
+    "xcraft-dev-rules": "^0.1.9"
   }
 }
