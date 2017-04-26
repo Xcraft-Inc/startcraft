@@ -1,2 +1,2 @@
 package.json eol=lf
-bin/*.js eol=lf
+bin/* eol=lf
