@@ -7,6 +7,14 @@ const shrew = require ('shrew');
 
 const config = require ('../lib/config.js');
 
+/* Skip startcraft stuff when it's called by startcraft itself.
+ * It happens for example in the case of yarn with `yarn add`.
+ */
+const startcraftEvent = process.env.startcraft_event;
+if (startcraftEvent === 'postinstall') {
+  process.exit (0);
+}
+
 const lifecycleEnv = 'npm_lifecycle_event';
 const lifecycleEvent = process.env[lifecycleEnv];
 const root = shrew ();
