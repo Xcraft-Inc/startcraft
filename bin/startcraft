@@ -4,6 +4,7 @@
 const exec = require ('child_process').exec;
 const watt = require ('watt');
 const shrew = require ('shrew');
+const clc = require ('cli-color');
 
 const config = require ('../lib/config.js');
 
@@ -37,7 +38,7 @@ function cbExec (next) {
       console.log (stdout);
     }
     if (stderr) {
-      console.error (stderr);
+      console.error (clc.yellowBright (stderr));
     }
     next (err);
   };
@@ -49,7 +50,11 @@ const scExec = watt (function* (section, next) {
     config.scripts.presc &&
     config.scripts[section][lifecycleEvent]
   ) {
-    console.log (`Run ${lifecycleEvent} script for section '${section}' ...`);
+    console.log (
+      clc.greenBright (
+        `Run ${lifecycleEvent} script for section '${section}' ...`
+      )
+    );
 
     const cmds = config.scripts[section][lifecycleEvent];
     for (const cmd of cmds) {
@@ -66,10 +71,10 @@ watt (
   },
   ex => {
     if (ex) {
-      console.error (ex.message || ex);
+      console.error (clc.redBright (ex.message || ex));
       process.exit (1);
     } else {
-      console.log ('startcraft done');
+      console.log (clc.greenBright ('startcraft done'));
     }
   }
 ) ();
