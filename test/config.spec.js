@@ -17,4 +17,10 @@ describe ('check config', function () {
     expect (modules[1].src).to.match (/.*test[/\\]test-module/);
     expect (modules[1].dst).to.match (/.*node_modules[/\\]test-module/);
   });
+
+  it ('#exclude', function () {
+    const {exclude} = require ('../lib/config.js');
+    expect (exclude.length).to.be.eql (1);
+    expect (exclude[0]).to.be.eql ('test');
+  });
 });

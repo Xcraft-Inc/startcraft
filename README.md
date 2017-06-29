@@ -63,6 +63,7 @@ Touch a json file named `.scrc` in your root package directory:
     "./lib/my-first-module",
     "./lib/my-second-module"
   ],
+  "exclude": [],
   "scripts": {
     "presc": {
       "postinstall" : [
@@ -80,6 +81,9 @@ Touch a json file named `.scrc` in your root package directory:
 `npm install`.
 
 `modules` entries is relative paths to your modules from the dev root package.
+
+`exclude` is an array of node modules to not install directly when extracting
+the list of dependencies fo each `"modules"`.
 
 `scripts` entries is hooked on the npm lifecycle. You can tell if they run in
 pre (`presc`) or post (`postrc`) `startcraft` run.

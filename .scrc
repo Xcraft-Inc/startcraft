@@ -4,6 +4,9 @@
     "./test/module-not-available",
     "./test/test-module"
   ],
+  "exclude": [
+    "test"
+  ],
   "scripts": {
     "presc": {
       "postinstall" : [
