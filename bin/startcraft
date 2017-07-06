@@ -23,7 +23,8 @@ const root = shrew ();
 let lcEvent = null;
 
 switch (lifecycleEvent) {
-  case 'postinstall': {
+  case 'postinstall':
+  case 'postshrinkwrap': {
     lcEvent = require (`../lib/events/${lifecycleEvent}.js`);
     break;
   }
