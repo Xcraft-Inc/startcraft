@@ -1,6 +1,6 @@
 {
   "name": "startcraft",
-  "version": "1.0.0-rc10",
+  "version": "1.0.0-rc11",
   "description": "Helper for crafting modules without publishing",
   "engines": {
     "node": ">=6"
