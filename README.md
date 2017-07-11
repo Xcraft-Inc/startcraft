@@ -6,22 +6,24 @@
 
 ## Use case
 
-- :goberserk: You hate publishing your modules each time you need to use it?
-- :construction: You have a development package containing future nodejs
-  modules or `git submodules`?
-- :goat: `npm link` doesn't do the job?
-- :clapper: You have some scripts to start in your modules?
+-   :goberserk: You hate publishing your modules each time you need to use it?
+-   :construction: You have a development package containing future nodejs
+    modules or `git submodules`?
+-   :goat: `npm link` doesn't do the job?
+-   :clapper: You have some scripts to start in your modules?
 
 *startcraft* can help you :punch:
 
 ## What startcraft do for you?
 
-- :wrench: symlink your development modules in the root `node_modules/`.
-- :octopus: `npm install` your development modules depencencies in the root
-  `node_modules/`.
-- :racehorse: run special `"startcraft": "echo hello"` scripts entry of your
-  development modules.
-- :cake: can run pre/post `startcraft` scripts for you.
+-   :wrench: symlink your development modules in the root `node_modules/`.
+-   :octopus: `npm install` your development modules depencencies in the root
+    `node_modules/`.
+-   :racehorse: run special `"startcraft": "echo hello"` scripts entry of your
+    development modules.
+-   :cake: can run pre/post `startcraft` scripts for you.
+-   :mailbox_with_mail: deploy properly your tree for `--production` builds
+    (support electron-builder).
 
 Okay...
 
@@ -35,14 +37,14 @@ scripts with the front-end (webpack etc.)...
 
 You friend :neckbeard: wants to contribute! How to bootstrap the craft?
 
-- Prepare a dev module (with repository) called: `invaders-dev`.
-- Add git submodules for your own toolbox, framework, front-end...
-- Install startcraft as dev-dep.
-- Hack in the `.scrc` file and add your own modules in the list.
-- Add `startcraft` in *postinstall* and *postshrinkwrap* scripts of
-  your `invaders-dev` `package.json`.
-- Give the `invaders-dev` repo url to your friend, and he can just `npm install`
-  in it!
+-   Prepare a dev module (with repository) called: `invaders-dev`.
+-   Add git submodules for your own toolbox, framework, front-end...
+-   Install startcraft as dev-dep.
+-   Hack in the `.scrc` file and add your own modules in the list.
+-   Add `startcraft` in *postinstall* and *postshrinkwrap* scripts of
+    your `invaders-dev` `package.json`.
+-   Give the `invaders-dev` repo url to your friend, and he can just `npm install`
+    in it!
 
 ## How to use and configure
 
@@ -88,3 +90,10 @@ the list of dependencies fo each `"modules"`.
 
 `scripts` entries is hooked on the npm lifecycle. You can tell if they run in
 pre (`presc`) or post (`postrc`) `startcraft` run.
+
+### For production build
+
+Just use `NODE_ENV=production npm install`, then the `package.json` file will
+be updated accordingly to the real dependencies in the `node_modules` directory.
+The modules provided by the `.scrc` files are no longer symlinks in this case
+but a full copy.
