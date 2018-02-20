@@ -20,6 +20,8 @@ const lifecycleEnv = 'npm_lifecycle_event';
 const lifecycleEvent = process.env[lifecycleEnv];
 const root = shrew ();
 
+console.log (`startcraft is using root directory: ${root}`);
+
 let lcEvent = null;
 
 switch (lifecycleEvent) {
