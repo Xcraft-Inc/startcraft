@@ -15,14 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/Xcraft-Inc/startcraft.git"
   },
-  "keywords": [
-    "devtools",
-    "npm",
-    "link",
-    "dependencies",
-    "modules",
-    "xcraft"
-  ],
+  "keywords": ["devtools", "npm", "link", "dependencies", "modules", "xcraft"],
   "author": "Mathieu Schroeter & Samuel Loup",
   "license": "MIT",
   "bugs": {
@@ -41,6 +34,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.5.3",
-    "xcraft-dev-rules": "^0.1.19"
+    "xcraft-dev-rules": "^0.2.0"
   }
 }

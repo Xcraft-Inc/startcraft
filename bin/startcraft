@@ -1,83 +1,83 @@
 #!/usr/bin/env node
 'use strict';
 
-const exec = require ('child_process').exec;
-const watt = require ('watt');
-const shrew = require ('shrew');
-const clc = require ('cli-color');
+const exec = require('child_process').exec;
+const watt = require('watt');
+const shrew = require('shrew');
+const clc = require('cli-color');
 
-const config = require ('../lib/config.js');
+const config = require('../lib/config.js');
 
 /* Skip startcraft stuff when it's called by startcraft itself.
  * It happens for example in the case of yarn with `yarn add`.
  */
 const startcraftEvent = process.env.startcraft_event;
 if (startcraftEvent === 'postinstall') {
-  process.exit (0);
+  process.exit(0);
 }
 
 const lifecycleEnv = 'npm_lifecycle_event';
 const lifecycleEvent = process.env[lifecycleEnv];
-const root = shrew ();
+const root = shrew();
 
-console.log (`startcraft is using root directory: ${root}`);
+console.log(`startcraft is using root directory: ${root}`);
 
 let lcEvent = null;
 
 switch (lifecycleEvent) {
   case 'postinstall':
   case 'postshrinkwrap': {
-    lcEvent = require (`../lib/events/${lifecycleEvent}.js`);
+    lcEvent = require(`../lib/events/${lifecycleEvent}.js`);
     break;
   }
   default: {
-    throw new Error (`lcEvent ${lifecycleEvent} not supported`);
+    throw new Error(`lcEvent ${lifecycleEvent} not supported`);
   }
 }
 
-function cbExec (next) {
-  return function (err, stdout, stderr) {
+function cbExec(next) {
+  return function(err, stdout, stderr) {
     if (stdout) {
-      console.log (stdout);
+      console.log(stdout);
     }
     if (stderr) {
-      console.error (clc.yellowBright (stderr));
+      console.error(clc.yellowBright(stderr));
     }
-    next (err);
+    next(err);
   };
 }
 
-const scExec = watt (function* (section, next) {
+const scExec = watt(function*(section, next) {
   if (
     config.scripts &&
     config.scripts.presc &&
     config.scripts[section][lifecycleEvent]
   ) {
-    console.log (
-      clc.greenBright (
+    console.log(
+      clc.greenBright(
         `Run ${lifecycleEvent} script for section '${section}' ...`
       )
     );
 
     const cmds = config.scripts[section][lifecycleEvent];
     for (const cmd of cmds) {
-      yield exec (cmd, {cwd: root}, cbExec (next));
+      yield exec(cmd, {cwd: root}, cbExec(next));
     }
   }
 });
 
-watt (
-  function* () {
-    yield scExec ('presc');
-    yield lcEvent ();
-    yield scExec ('postsc');
+watt(
+  function*() {
+    yield scExec('presc');
+    yield lcEvent();
+    yield scExec('postsc');
   },
   ex => {
     if (ex) {
-      console.error (clc.redBright (ex.message || ex));
-      process.exit (1);
+      console.error(clc.redBright(ex.message || ex));
+      process.exit(1);
     } else {
-      console.log (clc.greenBright ('startcraft done'));
+      console.log(clc.greenBright('startcraft done'));
     }
   }
-) ();
+)();

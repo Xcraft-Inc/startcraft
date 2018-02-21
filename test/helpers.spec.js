@@ -1,11 +1,11 @@
 'use strict';
 /* jshint -W030 */
 
-const {expect} = require ('chai');
+const {expect} = require('chai');
 
-const helpers = require ('../lib/helpers.js');
+const helpers = require('../lib/helpers.js');
 
-describe ('check helpers', function () {
+describe('check helpers', function() {
   const def1 = {
     os: ['win32'],
   };
@@ -20,18 +20,18 @@ describe ('check helpers', function () {
     os: ['win32', 'linux'],
   };
 
-  it ('#isOsCompatible', function () {
-    expect (helpers.isOsCompatible (def1, 'win32')).to.be.true;
-    expect (helpers.isOsCompatible (def1, 'linux')).to.be.false;
-    expect (helpers.isOsCompatible (def2, 'darwin')).to.be.false;
-    expect (helpers.isOsCompatible (def2, 'sunos')).to.be.true;
-    expect (helpers.isOsCompatible (def3, 'linux')).to.be.true;
-    expect (helpers.isOsCompatible (def4, 'win32')).to.be.true;
-    expect (helpers.isOsCompatible (def5, 'darwin')).to.be.false;
-    expect (helpers.isOsCompatible (def5, 'linux')).to.be.true;
+  it('#isOsCompatible', function() {
+    expect(helpers.isOsCompatible(def1, 'win32')).to.be.true;
+    expect(helpers.isOsCompatible(def1, 'linux')).to.be.false;
+    expect(helpers.isOsCompatible(def2, 'darwin')).to.be.false;
+    expect(helpers.isOsCompatible(def2, 'sunos')).to.be.true;
+    expect(helpers.isOsCompatible(def3, 'linux')).to.be.true;
+    expect(helpers.isOsCompatible(def4, 'win32')).to.be.true;
+    expect(helpers.isOsCompatible(def5, 'darwin')).to.be.false;
+    expect(helpers.isOsCompatible(def5, 'linux')).to.be.true;
   });
 
-  it ('#isSemverSatisfies', function () {
+  it('#isSemverSatisfies', function() {
     const ranges = [
       [true, ['^1.0.0', '^1.9.2']], // max: x.x.x, x.x.x
       [false, ['^1.5.0', '^2.1.2']], // max: 1.x.x, 2.x.x
@@ -51,8 +51,8 @@ describe ('check helpers', function () {
       [true, ['a', 'a']],
     ];
 
-    ranges.forEach (range =>
-      expect (helpers.isSemverSatisfies (range[1])).to.be.eql (range[0])
+    ranges.forEach(range =>
+      expect(helpers.isSemverSatisfies(range[1])).to.be.eql(range[0])
     );
   });
 });
