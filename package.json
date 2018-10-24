@@ -1,6 +1,6 @@
 {
   "name": "startcraft",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Helper for crafting modules without publishing",
   "engines": {
     "node": ">=6"
@@ -15,7 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/Xcraft-Inc/startcraft.git"
   },
-  "keywords": ["devtools", "npm", "link", "dependencies", "modules", "xcraft"],
+  "keywords": [
+    "devtools",
+    "npm",
+    "link",
+    "dependencies",
+    "modules",
+    "xcraft"
+  ],
   "author": "Mathieu Schroeter & Samuel Loup",
   "license": "MIT",
   "bugs": {
