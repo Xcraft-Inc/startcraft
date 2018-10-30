@@ -30,17 +30,17 @@
   },
   "homepage": "https://github.com/Xcraft-Inc/startcraft#readme",
   "dependencies": {
-    "cli-color": "^1.2.0",
+    "cli-color": "^1.4.0",
     "fs-extra": "^5.0.0",
-    "merge-deep": "^3.0.1",
+    "merge-deep": "^3.0.2",
     "rimraf": "^2.6.2",
-    "semver": "^5.5.0",
+    "semver": "^5.6.0",
     "shrew": "^0.1.1",
     "watt": "^3.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.5.3",
-    "xcraft-dev-rules": "^0.2.0"
+    "xcraft-dev-rules": "^0.2.3"
   }
 }
