@@ -55,4 +55,19 @@ describe('check helpers', function() {
       expect(helpers.isSemverSatisfies(range[1])).to.be.eql(range[0])
     );
   });
+
+  it('#areAllEqual', function() {
+    const ranges = [
+      [['a', 'a'], true],
+      [['a', 'b'], false],
+      [['a', 'a', 'a'], true],
+      [['a', 'b', 'a'], false],
+      [['a', 'a', 'b'], false],
+      [['a', 'b', 'c'], false],
+    ];
+
+    ranges.forEach(range =>
+      expect(helpers.areAllEqual(range[0])).to.be.eql(range[1])
+    );
+  });
 });
