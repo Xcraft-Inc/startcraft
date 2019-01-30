@@ -6,30 +6,30 @@
 
 ## Use case
 
--   :goberserk: You hate publishing your modules each time you need to use it?
--   :construction: You have a development package containing future nodejs
-    modules or `git submodules`?
--   :goat: `npm link` doesn't do the job?
--   :clapper: You have some scripts to start in your modules?
+* :goberserk: You hate publishing your modules each time you need to use it?
+* :construction: You have a development package containing future nodejs
+  modules or `git submodules`?
+* :goat: `npm link` doesn't do the job?
+* :clapper: You have some scripts to start in your modules?
 
-*startcraft* can help you :punch:
+_startcraft_ can help you :punch:
 
 ## What startcraft do for you?
 
--   :wrench: symlink your development modules in the root `node_modules/`.
--   :octopus: `npm install` your development modules depencencies in the root
-    `node_modules/`.
--   :racehorse: run special `"startcraft": "echo hello"` scripts entry of your
-    development modules.
--   :cake: can run pre/post `startcraft` scripts for you.
--   :mailbox_with_mail: deploy properly your tree for `--production` builds
-    (support electron-builder).
+* :wrench: symlink your development modules in the root `node_modules/`.
+* :octopus: `npm install` your development modules depencencies in the root
+  `node_modules/`.
+* :racehorse: run special `"startcraft": "echo hello"` scripts entry of your
+  development modules.
+* :cake: can run pre/post `startcraft` scripts for you.
+* :mailbox_with_mail: deploy properly your tree for `--production` builds
+  (support electron-builder).
 
 Okay...
 
 ## Example
 
-You develop the next killer *space invader* mmo-shooter :space_invader:,
+You develop the next killer _space invader_ mmo-shooter :space_invader:,
 but you need to hack in your :fire: toolbox modules for adding new features.
 
 You have a non-trivial development process where you need to launch some
@@ -37,14 +37,14 @@ scripts with the front-end (webpack etc.)...
 
 You friend :neckbeard: wants to contribute! How to bootstrap the craft?
 
--   Prepare a dev module (with repository) called: `invaders-dev`.
--   Add git submodules for your own toolbox, framework, front-end...
--   Install startcraft as dev-dep.
--   Hack in the `.scrc` file and add your own modules in the list.
--   Add `startcraft` in *postinstall* and *postshrinkwrap* scripts of
-    your `invaders-dev` `package.json`.
--   Give the `invaders-dev` repo url to your friend, and he can just `npm install`
-    in it!
+* Prepare a dev module (with repository) called: `invaders-dev`.
+* Add git submodules for your own toolbox, framework, front-end...
+* Install startcraft as dev-dep.
+* Hack in the `.scrc` file and add your own modules in the list.
+* Add `startcraft` in _postinstall_ and _postshrinkwrap_ scripts of
+  your `invaders-dev` `package.json`.
+* Give the `invaders-dev` repo url to your friend, and he can just `npm install`
+  in it!
 
 ## How to use and configure
 
@@ -62,14 +62,11 @@ Touch a json file named `.scrc` in your root package directory:
 ```json
 {
   "npmInstallArgs": [],
-  "modules": [
-    "./lib/my-first-module",
-    "./lib/my-second-module"
-  ],
+  "modules": ["./lib/my-first-module", "./lib/my-second-module"],
   "exclude": [],
   "scripts": {
     "presc": {
-      "postinstall" : [
+      "postinstall": [
         "git submodule update --init --recursive",
         "git submodule foreach --recursive git checkout master",
         "git submodule foreach --recursive git pull"
