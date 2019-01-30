@@ -64,6 +64,9 @@ Touch a json file named `.scrc` in your root package directory:
   "npmInstallArgs": [],
   "modules": ["./lib/my-first-module", "./lib/my-second-module"],
   "exclude": [],
+  "substitutions": {
+    "the-module-prebuilt": "the-module"
+  },
   "scripts": {
     "presc": {
       "postinstall": [
@@ -84,6 +87,12 @@ Touch a json file named `.scrc` in your root package directory:
 
 `exclude` is an array of node modules to not install directly when extracting
 the list of dependencies fo each `"modules"`.
+
+`substitutions` is a map where it's possible to specify the substitution of a
+module by an other one. For example, after a full install, you want to replace
+a prebuilt module by the original module. It's possible here, and then the
+substitution will remove the prebuilt module and create a symbolic link
+from the original module as target to the prebuilt module name as destination.
 
 `scripts` entries is hooked on the npm lifecycle. You can tell if they run in
 pre (`presc`) or post (`postrc`) `startcraft` run.
