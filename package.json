@@ -32,10 +32,9 @@
   "dependencies": {
     "cli-color": "^1.4.0",
     "fs-extra": "^5.0.0",
-    "lodash": "^4.17.11",
     "merge-deep": "^3.0.2",
-    "rimraf": "^2.6.3",
-    "semver": "^5.6.0",
+    "rimraf": "^2.7.1",
+    "semver": "^5.7.1",
     "shrew": "^0.1.1",
     "watt": "^3.3.0"
   },
@@ -44,7 +43,7 @@
     "mocha": "^5.2.0",
     "prettier": "1.18.2",
     "xcraft-dev-prettier": "^1.0.0",
-    "xcraft-dev-rules": "^1.0.0"
+    "xcraft-dev-rules": "^1.0.2"
   },
   "prettier": "xcraft-dev-prettier"
 }
