@@ -74,7 +74,7 @@ watt(
   },
   ex => {
     if (ex) {
-      console.error(clc.redBright(ex.message || ex));
+      console.error(clc.redBright(ex.stack || ex.message || ex));
       process.exit(1);
     } else {
       console.log(clc.greenBright('startcraft done'));
